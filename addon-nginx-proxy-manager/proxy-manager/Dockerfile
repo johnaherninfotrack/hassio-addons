@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base-nodejs:0.2.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/base-nodejs:0.2.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -10,7 +10,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Copy Python requirements file & patches
 COPY requirements.txt /tmp/
-COPY patches/*.patch /usr/src/
+#COPY patches/*.patch /usr/src/
 
 # Setup base
 ARG NGINX_PROXY_MANAGER_VERSION="v2.11.1"
@@ -22,7 +22,7 @@ RUN \
         libffi-dev=3.4.4-r3 \
         openssl-dev=3.1.4-r6 \
         patch=2.7.6-r10 \
-        python3-dev=3.11.8-r0 \
+        python3-dev=3.11.9-r0 \
     \
     && apk add --no-cache \
         apache2-utils=2.4.59-r0 \
@@ -33,7 +33,7 @@ RUN \
         nginx=1.24.0-r15 \
         openssl=3.1.4-r6 \
         py3-pip=23.3.1-r0 \
-        python3=3.11.8-r0 \
+        python3=3.11.9-r0 \
     \
     && pip3 install -r /tmp/requirements.txt \
     \
@@ -45,9 +45,9 @@ RUN \
     && tar zxvf \
         /tmp/nginxproxymanager.tar.gz \
         --strip 1 -C /app \
-    \
-    && for i in /usr/src/*.patch; do \
-        patch -d /app -p 1 < "${i}"; done \
+    #\
+    #&& for i in /usr/src/*.patch; do \
+    #    patch -d /app -p 1 < "${i}"; done \
     \
     && cd /app/frontend \
     && yarn install \
