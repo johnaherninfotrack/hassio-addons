@@ -16,7 +16,7 @@ index eb1966d..0a2d320 100644
  		plugin.dependencies = plugin.dependencies.replace(/{{certbot-version}}/g, CERTBOT_VERSION_REPLACEMENT);
  
 -		const cmd = '. /opt/certbot/bin/activate && pip install --no-cache-dir ' + plugin.dependencies + ' ' + plugin.package_name + plugin.version + ' ' + ' && deactivate';
-+		const cmd = 'pip install --no-cache-dir ' + plugin.dependencies + ' ' + plugin.package_name + plugin.version;
++		const cmd = 'pip install --no-cache-dir ' + plugin.dependencies + ' ' + plugin.package_name;
  		return utils.exec(cmd)
  			.then((result) => {
  				logger.complete(`Installed ${pluginKey}`);
