@@ -47,7 +47,7 @@ RUN \
         --strip 1 -C /app \
     \
     && for i in /usr/src/*.patch; do \
-        patch -d /app -p 1 < "${i}"; done \
+        patch -d /app -p 1 < "${i}" --verbose; done \
     \
     && cd /app/frontend \
     && yarn install \
