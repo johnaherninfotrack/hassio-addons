@@ -115,6 +115,8 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
+RUN adduser -D npm
+
 # Build arguments
 ARG BUILD_ARCH
 ARG BUILD_DATE
