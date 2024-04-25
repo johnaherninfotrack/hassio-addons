@@ -328,7 +328,7 @@ index 8261833..8d3ca91 100644
  daemon off;
 +load_module /usr/lib/nginx/modules/ngx_stream_module.so;
  pid /run/nginx/nginx.pid;
- user npm;
+ user node;
  
 @@ -9,13 +10,13 @@ worker_processes auto;
  # Enables the use of JIT for regular expressions to speed-up their processing.
